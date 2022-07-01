@@ -1,0 +1,90 @@
+table {
+    width: 100%;
+}
+
+.no-data {
+    text-align: center;
+    padding: 30px;
+}
+
+span.link {
+  color: #e2b17f;
+  text-decoration: none;
+}
+
+span.link:hover {
+  cursor: pointer;
+  background-color: #0096c1;
+  color: #00303e;
+}
+
+.bigger input {
+    font-size: 12px;
+}
+
+.menu-spacer {
+    padding-top: 5px;
+    display: inline-block !important;
+}
+
+.invoice-spacer {
+  margin-top: 25px;
+}
+
+.pulse-spinner {
+  background-color: #c5c5c5;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+table.ndoc-signature-table {
+  th {
+      color: #c8ff00b5;
+      font-weight: bold;
+  }
+}
+
+table.ndoc-invoice-table {
+  text-align: center;
+  user-select: text;
+  border-collapse: collapse;
+  th {
+      color: #c8ff00b5;
+      font-weight: bold;
+  }
+
+  td, tr, th {
+      border: 1px solid #737373;
+      padding: 0;
+  }
+
+  .invoice-actions {
+      width: 220px;
+      user-select: none;
+  }
+}
+
+table.ndoc-signature-table {
+  width: 1%;
+}
+
+img.ndoc-signature {
+  height: 100px;
+}
+
+.summary td {
+  color: #d4f597b5;
+  border: 0 !important;
+}
+
+.empty {
+  width: 100%;
+  text-align: center;
+}
+
+.spinner {
+  width: 100%;
+  text-align: center;
+}

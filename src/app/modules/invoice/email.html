@@ -1,0 +1,26 @@
+<div class="ndoc-email" data-ng-controller="EmailCtrl as vm">
+    <div class="pad">
+        <div class="no-data" data-ng-if="!vm.invoice">Инвойс не найден</div>
+        <div data-ng-if="vm.invoice" class="ndoc-form bigger">
+            <div class="form-group">
+                <label class="control-label">Получатели</label>
+                <input type="text" data-ng-model="vm.email.recipients" readonly>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Тема письма</label>
+                <input type="text" data-ng-model="vm.email.title" readonly>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Письмо</label>
+                <textarea rows="13" data-ng-model="vm.email.body" readonly></textarea>
+            </div>
+            <div class="invoice-warn">
+                <div>Не забываем прикреплять инвойсы:</div>
+                <div class="invoice-path" data-ng-bind="vm.email.filename"></div>
+            </div>
+            <div>
+                <a ui-sref="app.index">[Хорошо]</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<section class="container sm-l sm-6 md-6 lg-6 settings" data-ng-controller="InvoiceCtrl as vm">
+    <div class="pad ndoc-invoice">
+        <form class="invoice-form" name="vm.invoiceForm" data-ng-submit="vm.onSubmit(vm.invoice)">
+            <div class="invoice-spacer"></div>
+            <ndoc-section-title data-ng-if="!vm.isEdit" data-title="Создать инвойс"></ndoc-section-title>
+            <ndoc-section-title data-ng-if="vm.isEdit" data-title="Редактировать инвойс {{vm.invoice.id}}"></ndoc-section-title>
+            <div class="form-group">
+                <table class="invoice-table">
+                    <thead>
+                        <th class="invoice-no">
+                            <label class="control-label">Номер</label>
+                        </th>
+                        <th class="invoice-date">
+                            <label class="control-label">Дата</label>
+                        </th>
+                        <th colspan="2">
+                            <label class="control-label">Период</label>
+                        </th>
+                        <th colspan="2" class="invoice-bank-comission">
+                            <label class="control-label">Комиссия банка</label>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="invoice-no">
+                                <input type="number" data-ng-model="vm.invoice.data.invoiceNo" placeholder="" required>
+                            </td>
+                            <td class="invoice-date">
+                                <ndoc-date-picker data-ng-model="vm.invoice.data.invoiceSendDate" required></ndoc-date-picker>
+                            </td>
+                            <td class="invoice-period">
+                                <ndoc-date-picker data-ng-model="vm.invoice.data.periodStart" required></ndoc-date-picker>
+                            </td>
+                            <td class="invoice-period">
+                                <ndoc-date-picker data-ng-model="vm.invoice.data.periodEnd" required></ndoc-date-picker>
+                            </td>
+                            <td>
+                                <input type="checkbox" data-ng-model="vm.invoice.data.includeBankComission">
+                            </td>
+                            <td data-ng-if="vm.invoice.data.includeBankComission">
+                                <input type="number" step="0.01" data-ng-model="vm.invoice.settings.bankComission" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="invoice-no">
+                                <span class="auto-fill" data-ng-click="vm.prevInvoicePlus()">Пред.инвойс+1</span>
+                            </td>
+                            <td class="invoice-date">
+                                <span class="auto-fill" data-ng-click="vm.setDate('today')">Сегодня</span>
+                                <span class="auto-fill" data-ng-click="vm.setDate('tomorrow')">Завтра</span>
+                            </td>
+                            <td colspan="2">
+                                <!-- <span class="auto-fill" data-ng-click="vm.setRangeDate('prevInvoice')">Пред.инвойс-прошл.вскр.</span> -->
+                                <span class="auto-fill" data-ng-click="vm.setRangeDate('month')">Месяц</span>
+                                <span class="auto-fill" data-ng-click="vm.setRangeDate('week')">Неделя</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="invoice-spacer"></div>
+            <div class="invoice-timesheet" data-ng-if="!vm.isFormInvalid()">
+                <ndoc-section-title data-title="Табель"></ndoc-section-title>
+                <invoice-timesheet data-invoice="vm.invoice"></invoice-timesheet>
+            </div>
+            <div class="invoice-spacer"></div>
+            <div class="invoice-spacer"></div>
+            <div class="form-group">
+                <button type="submit" data-ng-disabled="vm.isFormInvalid()">Создать инвойс</button>
+                <span class="no-data" data-ng-if="vm.isFormInvalid()" data-ng-bind="vm.isFormInvalid()"></span>
+            </div>
+        </form>
+    </div>
+</section>

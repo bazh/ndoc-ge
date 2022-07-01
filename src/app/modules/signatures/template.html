@@ -1,0 +1,23 @@
+<section class="container sm-l sm-6 md-6 lg-6 settings" data-ng-controller="SignaturesCtrl as vm">
+    <div class="pad">
+        <ndoc-section-title data-title="Подписи"></ndoc-section-title>
+        <div class="invoice-spacer"></div>
+        <div class="nav-submenu">
+            <span class="link nav-left" data-ng-click="vm.onUploadFiles()">[Добавить]</span>
+        </div>
+        <div class="invoice-spacer"></div>
+        <div class="no-data" data-ng-if="!vm.signatures.length">Подписей нет!</div>
+        <table class="ndoc-signature-table" data-ng-if="vm.signatures.length">
+            <tbody>
+                <tr data-ng-repeat="item in vm.signatures">
+                    <td>
+                        <img class="ndoc-signature" data-ng-src="{{vm.getImage(item)}}" />
+                    </td>
+                    <td>
+                        <span class="link" data-ng-click="vm.onDelete(item.id)">[Удалить]</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

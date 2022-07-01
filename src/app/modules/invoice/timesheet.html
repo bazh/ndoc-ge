@@ -1,0 +1,33 @@
+<div class="ndoc-timesheet">
+    <table data-ng-if="vm.invoice.timesheet.days.length">
+        <tbody>
+            <tr class="day-weekday">
+                <td data-ng-repeat="item in vm.invoice.timesheet.days" data-ng-bind="item.weekday"></td>
+                <td colspan="2">Всего</td>
+                <td colspan="2">
+                    <span class="link reset-timesheet" data-ng-click="vm.generateTimesheet()">[Сбросить]</span>
+                </td>
+            </tr>
+            <tr class="day-date">
+                <td data-ng-repeat="item in vm.invoice.timesheet.days" data-ng-bind="item.day"></td>
+                <td>Часы</td>
+                <td>{{vm.cur}}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td data-ng-repeat="item in vm.invoice.timesheet.days" data-ng-bind="item.hours" class="day-{{item.type}}" data-ng-mouseover="vm.onMouseOver(item)" data-ng-mousedown="vm.onMouseDown(item)"></td>
+                <td class="total" data-ng-bind="vm.getTotal('hours')"></td>
+                <td class="total" data-ng-bind="vm.getTotal('money')"></td>
+                <td>
+                    <select name="singleSelect" ng-model="vm.mouseMode">
+                        <option value="work">Работа</option>
+                        <option value="holiday">Выходной</option>
+                    </select>
+                </td>
+                <td class="custom-work-hours">
+                    <input type="number" class="custom-work-input" data-ng-if="vm.mouseMode === 'work'" data-ng-model="vm.customWorkHours" placeholder="" required>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,51 @@
+.ndoc-form {
+    padding: 8px 0;
+
+    .form-section {
+        font-size: 13px;
+        border-bottom: 1px solid;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+
+    label.control-label {
+        display: block;
+    }
+
+    .form-group {
+        padding-bottom: 10px;
+        padding-left: 10px;
+
+        $form-elem: #ffffffc4;
+
+        input {
+            font-size: 12px;
+            width: 50%;
+            border: 1px $form-elem;
+            background: $form-elem;
+        }
+
+        textarea {
+            font-size: 12px;
+            width: 50%;
+            border: 1px $form-elem;
+            background: $form-elem;
+        }
+    }
+
+    .button-group {
+        width: 100%;
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+    }
+
+    .error-message {
+        color: #fb9458;
+    }
+}

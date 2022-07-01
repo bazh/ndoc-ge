@@ -1,0 +1,19 @@
+table.ndoc-table {
+  border-spacing: 1px;
+  text-align: center;
+  user-select: text;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 30px; }
+  table.ndoc-table th {
+    text-align: center;
+    padding: 0px 3px 0 2px;
+    color: #c8ff00b5;
+    font-weight: bold; }
+  table.ndoc-table td {
+    border: 1px solid #737373;
+    padding: 0; }
+  table.ndoc-table td.left {
+    text-align: left; }
+  table.ndoc-table td.right {
+    text-align: right; }

@@ -1,0 +1,201 @@
+doctype html
+html
+    head
+        meta(charset='utf8')
+    body
+        style.
+            body {
+                padding: 2px;
+                font-family: Tahoma;
+                font-size: 10px;
+            }
+
+            .logo {
+                width: 25%;
+            }
+
+            .right {
+                text-align: right;
+            }
+
+            .left {
+                text-align: left;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            .bold {
+                font-weight: bold;
+            }
+
+            .timesheet-title {
+                font-size: 20px;
+                font-weight: bold;
+                color: #717171;
+            }
+
+            .vertical-spacer {
+                height: 50px;
+            }
+
+            .worklog thead {
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .worklog td {
+                border: 1px solid;
+                text-align: center
+            }
+
+            .footer {
+                width: 100%;
+            }
+
+            .timesheet {
+                border-collapse: collapse;
+            }
+
+            .timesheet td {
+                border: 1px solid;
+            }
+
+            td.no-border {
+                border: 0;
+            }
+
+            .sheet-header td {
+                border: 0;
+                height: 20px;
+                background: #dedede;
+                font-weight: bold;
+            }
+
+            .sheet-header2 td {
+                border: 0;
+                text-align: center;
+                height: 20px;
+                font-weight: bold;
+                background: #bfbfbf;
+            }
+
+            .sheet-days td {
+                text-align: center;
+            }
+
+            .sheet-days-align {
+                visibility: hidden;
+            }
+
+            td.month {
+                border-left: black 1px solid;
+                //- margin-left: 5px;
+            }
+
+            tr.border, td.border {
+                border: black 1px solid;
+            }
+
+            td.white {
+                background: none;
+            }
+
+            td.empty {
+                color: white;
+                border: 1px solid black;
+            }
+
+            td.total-column {
+                background: #dcdcdc;
+            }
+
+            div.header {
+                margin: 15px 0 0 20px
+            }
+
+            div.small-spacer {
+                margin: 3px 0;
+            }
+
+        div.header
+            div.timesheet-title Monthly Timesheet
+            div.small-spacer
+                span.bold Empoyee:&nbsp
+                span #{invoice.settings.name}
+            div.small-spacer
+                span.bold Month:&nbsp
+                span #{invoice.timesheet.month}
+
+        .vertical-spacer
+        table(width='100%').timesheet
+            tr.sheet-header.center
+                td(rowspan=3).border PROJECT
+                td(rowspan=3).border CODE
+                - var x = _.uniqBy(invoice.timesheet.days, 'month');
+                - var months = x.map(function (item) { return {name: item.month, colspan: _.findIndex(invoice.timesheet.days, item)}});
+                - for (var i=0; i<months.length; i++) {
+                -        if (!months[i+1]) {
+                -            months[i].colspan = invoice.timesheet.days.length - months[i].colspan;
+                -        } else {
+                -            months[i].colspan = months[i+1].colspan;
+                -        }
+                -    }
+                each item in months
+                    td.center.border(colspan=item.colspan) #{item.name}
+                td(rowspan=3).border Total Hrs
+
+            tr.sheet-header2.border
+                each item, n in invoice.timesheet.days
+                    if (n == 0 || item.day == 1)
+                        td.month #{item.day}
+                    else
+                        td #{item.day}
+
+            tr.sheet-header2.border
+                each item, n in invoice.timesheet.days
+                    if (n == 0 || item.day == 1)
+                        td.month #{item.weekday}
+                    else
+                        td #{item.weekday}
+
+            tr.sheet-days
+                td #{invoice.settings.projectName}
+                td
+                each item in invoice.timesheet.days
+                    if item.type === 'work'
+                        td= item.hours
+                    else
+                        td
+                td.bold #{invoice.timesheet.totalHours}
+
+            each item in new Array(10)
+                tr.sheet-days
+                    td.empty &nbsp;
+                    td
+                    each item in invoice.timesheet.days
+                        td
+                    td
+
+            tr.bold
+                td(colspan='2').total-column.right.bold Total Hours:&nbsp;
+                each item in invoice.timesheet.days
+                    if item.type === 'work'
+                        td.center.total-column= item.hours
+                    else
+                        td.center.total-column
+                td.total-column.center #{invoice.timesheet.totalHours}
+
+            each item in ['Regular Hours', 'OT Hours']
+                tr.bold
+                    td(colspan='2').total-column.right.bold #{item}:&nbsp;
+                    each item in invoice.timesheet.days
+                        td.total-column
+                    td.total-column
+
+            tr.sheet-days-align
+                td
+                td
+                each item in invoice.timesheet.days
+                    td 00

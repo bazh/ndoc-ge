@@ -1,0 +1,50 @@
+<section class="container sm-l sm-6 md-6 lg-6 index" data-ng-controller="IndexCtrl as vm">
+    <div class="pad" data-ng-if="::!vm.notReady">
+        <ndoc-section-title data-title="Инвойсы"></ndoc-section-title>
+        <div class="invoice-spacer"></div>
+        <div class="nav-submenu">
+            <a data-ui-sref="app.invoice">[Добавить]</a>
+            <span class="link" data-ng-if="!vm.showHidden" data-ng-click="vm.showHidden=true">[Показать архив]</span>
+            <span class="link" data-ng-if="vm.showHidden" data-ng-click="vm.showHidden=false">[Cкрыть архив]</span>
+        </div>
+        <div class="invoice-spacer"></div>
+        <div class="no-data" data-ng-if="!vm.invoices.length">Инвойсов еще нет</div>
+        <table class="ndoc-invoice-table" data-ng-if="vm.invoices.length">
+            <thead>
+                <th>#</th>
+                <th>Дата</th>
+                <th>Период</th>
+                <th>Часы</th>
+                <th>Стоимость</th>
+                <th>К.Б.</th>
+                <th>Всего</th>
+                <th class="invoice-actions"></th>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="item in vm.invoices | orderBy:'-created'" data-ng-if="!item.hidden || vm.showHidden">
+                    <td data-ng-bind="item.data.invoiceNo"></td>
+                    <td data-ng-bind="item.data.invoiceSendDate"></td>
+                    <td>{{item.data.periodStart}} - {{item.data.periodEnd}}</td>
+                    <td data-ng-bind="vm.getTotal(item, 'hours')"></td>
+                    <td data-ng-bind="vm.getTotal(item, 'money')"></td>
+                    <td data-ng-bind="vm.getTotal(item, 'bank')"></td>
+                    <td data-ng-bind="vm.getTotal(item, 'everything')"></td>
+                    <td class="invoice-actions">
+                        <span class="link" data-ng-click="vm.onDownload(item)">[Скачать]</span>
+                        <span class="link" data-ng-click="vm.toArchive(item)">
+                            <span data-ng-if="!item.hidden">[В&nbsp;архив]</span>
+                            <span data-ng-if="item.hidden">[Из&nbsp;архива]</span>
+                        </span>
+                        <span class="link" data-ng-click="vm.onRemove(item)">[Удалить]</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pad" data-ng-if="::vm.notReady">
+        <div class="invoice-spacer"></div>
+        <div class="bold">Добро пожаловать на борт!</div><br>
+        <div>Для начала работы нужно заполнить <a ui-sref="app.settings">[Настройки]</a> и добавить</div>
+        <div>хотя бы одну <a ui-sref="app.signatures">[Подпись]</a> (желательно в png формате с большим разрешением)</div>
+    </div>
+</section>

@@ -1,0 +1,78 @@
+{
+  "name": "ndoc-ge",
+  "productName": "ndoc",
+  "version": "1.0.0",
+  "description": "ndoc",
+  "main": "src/index.js",
+  "scripts": {
+    "css": "yarn scss",
+    "scss": "./node_modules/node-sass/bin/node-sass --recursive ./src/app/scss --output ./src/app/css",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "bazh",
+    "email": "bazh@inbox.ru"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "tcsstat"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "angular": "^1.8.2",
+    "angular-spinkit": "^0.3.4",
+    "angular-ui-router": "^1.0.29",
+    "archiver": "^5.3.1",
+    "async": "^3.2.3",
+    "babel-polyfill": "^6.26.0",
+    "chromedriver": "^93.0.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.0.0",
+    "html-to-json": "^0.6.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
+    "node-fetch": "^2.0.0",
+    "pug": "^3.0.2",
+    "puppeteer": "^10.4.0",
+    "puppeteer-core": "^10.4.0",
+    "uuid": "^8.3.2",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "13.1.2",
+    "node-sass": "^6.0.0"
+  }
+}

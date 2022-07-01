@@ -1,0 +1,45 @@
+.navigation {
+  user-select: none;
+  padding: 15px 0 10px; }
+  .navigation .logo {
+    font-size: 12px;
+    color: white; }
+  .navigation .logo:hover {
+    background: linear-gradient(150deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8);
+    background-size: 700% 500%;
+    animation: rainbow 9s ease infinite;
+    color: black; }
+  .navigation .logo-description {
+    color: #8a8989;
+    font-size: 11px; }
+  .navigation .menu-item {
+    color: white;
+    margin: 0 10px; }
+  .navigation .menu-item:before {
+    content: "["; }
+  .navigation .menu-item:after {
+    content: "]"; }
+  .navigation .menu-item-active {
+    background: rgba(216, 225, 236, 0.58);
+    color: black;
+    padding: 2px 0; }
+  .navigation .nav-left {
+    text-align: left;
+    margin-left: 20px; }
+  .navigation .nav-right {
+    text-align: right;
+    margin-right: 20px; }
+
+.nav-submenu {
+  display: inline-block !important;
+  width: 100%; }
+  .nav-submenu .left {
+    width: 40%;
+    padding-left: 10px;
+    text-align: left;
+    float: left;
+    vertical-align: middle; }
+  .nav-submenu .right {
+    width: 40%;
+    text-align: right;
+    float: right; }

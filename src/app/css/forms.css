@@ -1,0 +1,30 @@
+.ndoc-form {
+  padding: 8px 0; }
+  .ndoc-form .form-section {
+    font-size: 13px;
+    border-bottom: 1px solid;
+    margin-bottom: 15px;
+    margin-top: 10px; }
+  .ndoc-form label.control-label {
+    display: block; }
+  .ndoc-form .form-group {
+    padding-bottom: 10px;
+    padding-left: 10px; }
+    .ndoc-form .form-group input {
+      font-size: 12px;
+      width: 50%;
+      border: 1px #ffffffc4;
+      background: #ffffffc4; }
+    .ndoc-form .form-group textarea {
+      font-size: 12px;
+      width: 50%;
+      border: 1px #ffffffc4;
+      background: #ffffffc4; }
+  .ndoc-form .button-group {
+    width: 100%; }
+    .ndoc-form .button-group .left {
+      float: left; }
+    .ndoc-form .button-group .right {
+      float: right; }
+  .ndoc-form .error-message {
+    color: #fb9458; }

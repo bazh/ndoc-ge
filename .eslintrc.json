@@ -1,0 +1,64 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true,
+        "shared-node-browser": true,
+        "commonjs": true,
+        "jquery": true,
+        "mocha": true
+    },
+    "globals": {
+        "commonEnums": "readonly",
+        "grunt": "readonly",
+        "sprintf": "readonly",
+        "angular": "readonly",
+        "d3": "readonly",
+        "nv": "readonly",
+        "_": "readonly",
+        "lodash": "readonly",
+        "moment": "readonly",
+        "chai": "readonly",
+        "io": "readonly",
+        "later": "readonly",
+        "prettyCron": "readonly",
+        "ApplicationConfiguration": "readonly",
+        "unitTestsHelpers": "readonly",
+        "__": "readonly",
+        "__n": "readonly",
+        "gettext": "readonly",
+        "theme": "readonly",
+        "inject": "readonly"
+    },
+    "extends": ["eslint:recommended", "google"],
+    "rules": {
+        "no-case-declarations": "off",
+        "max-len": ["error", {"code": 100}],
+        "require-jsdoc": ["off"],
+        "valid-jsdoc": ["error", {
+            "requireReturn": false,
+            "requireReturnType": false,
+            "requireReturnDescription": false,
+            "requireParamDescription": false
+        }],
+        "no-const-assign": "error",
+        "comma-dangle": ["error", "never"],
+        "camelcase": ["error", {"properties": "never"}],
+        "indent": ["error", 4, {
+            "SwitchCase": 1,
+            "MemberExpression": "off"
+        }],
+        "dot-notation": "off",
+        "quote-props": "off",
+        "no-console": ["error", {"allow": ["warn", "error"]}],
+        "no-invalid-this": "off"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2019
+    }
+}

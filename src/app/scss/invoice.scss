@@ -1,0 +1,98 @@
+.ndoc-invoice {
+    form.invoice-form {
+        $form-elem: #ffffffc4;
+
+        textarea, input {
+            width: 100%;
+            font-size: 13px;
+            border: 1px $form-elem;
+            background: $form-elem;
+        }
+    }
+
+    table.invoice-table {
+        border-spacing: 1px
+
+        input {
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0px 3px 0 2px;
+        }
+
+        th.invoice-no, td.invoice-no {
+            width: 6%;
+        }
+
+        th.invoice-date, td.invoice-date {
+            width: 20%;
+        }
+
+        th.invoice-period, td.invoice-period {
+            width: 25%;
+        }
+
+        td.invoice-bank-comission {
+            width: 10%;
+        }
+
+        .invoice-bank-comission {
+            width: 8%;
+        }
+
+        span.auto-fill {
+            cursor: pointer;
+            color: #bfbfbf;
+            margin-right: 4px;
+            border-bottom: 1px dotted;
+        }
+    }
+
+    .invoice-line {
+        width: 100%;
+    }
+
+    .reset-timesheet {
+        color: #ffc205;
+    }
+
+    .invoice-timesheet {
+        /*margin-top: 25px;*/
+    }
+}
+
+.ndoc-timesheet {
+    table {
+        td {
+            width: 25px;
+            height: 25px;
+            border: 1px solid;
+            padding: 0;
+            text-align: center;
+        }
+
+        tr.day-weekday, tr.day-date {
+            background: #808080;
+            border: 0;
+        }
+
+        .custom-work-hours {
+            width: 65px;
+        }
+
+        .total {
+            width: 65px;
+        }
+
+        .day-eow, .day-holiday{
+            background: #64b14b;
+            color: #64b14b;
+        }
+
+        .day-work {
+            background: #d8cc3e;
+        }
+    }
+}

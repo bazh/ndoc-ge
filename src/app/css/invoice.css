@@ -1,0 +1,60 @@
+.ndoc-invoice form.invoice-form textarea, .ndoc-invoice form.invoice-form input {
+  width: 100%;
+  font-size: 13px;
+  border: 1px #ffffffc4;
+  background: #ffffffc4; }
+
+.ndoc-invoice table.invoice-table {
+  border-spacing: 1px input;
+    border-spacing-width: 100%; }
+  .ndoc-invoice table.invoice-table th, .ndoc-invoice table.invoice-table td {
+    text-align: left;
+    padding: 0px 3px 0 2px; }
+  .ndoc-invoice table.invoice-table th.invoice-no, .ndoc-invoice table.invoice-table td.invoice-no {
+    width: 6%; }
+  .ndoc-invoice table.invoice-table th.invoice-date, .ndoc-invoice table.invoice-table td.invoice-date {
+    width: 20%; }
+  .ndoc-invoice table.invoice-table th.invoice-period, .ndoc-invoice table.invoice-table td.invoice-period {
+    width: 25%; }
+  .ndoc-invoice table.invoice-table td.invoice-bank-comission {
+    width: 10%; }
+  .ndoc-invoice table.invoice-table .invoice-bank-comission {
+    width: 8%; }
+  .ndoc-invoice table.invoice-table span.auto-fill {
+    cursor: pointer;
+    color: #bfbfbf;
+    margin-right: 4px;
+    border-bottom: 1px dotted; }
+
+.ndoc-invoice .invoice-line {
+  width: 100%; }
+
+.ndoc-invoice .reset-timesheet {
+  color: #ffc205; }
+
+.ndoc-invoice .invoice-timesheet {
+  /*margin-top: 25px;*/ }
+
+.ndoc-timesheet table td {
+  width: 25px;
+  height: 25px;
+  border: 1px solid;
+  padding: 0;
+  text-align: center; }
+
+.ndoc-timesheet table tr.day-weekday, .ndoc-timesheet table tr.day-date {
+  background: #808080;
+  border: 0; }
+
+.ndoc-timesheet table .custom-work-hours {
+  width: 65px; }
+
+.ndoc-timesheet table .total {
+  width: 65px; }
+
+.ndoc-timesheet table .day-eow, .ndoc-timesheet table .day-holiday {
+  background: #64b14b;
+  color: #64b14b; }
+
+.ndoc-timesheet table .day-work {
+  background: #d8cc3e; }

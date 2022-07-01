@@ -1,0 +1,14 @@
+<section class="container sm-l sm-6 md-6 lg-6 navigation" data-ng-controller="NavigationCtrl as vm">
+    <div class="pad">
+        <a data-ui-sref="app.index" class="logo">[ndoc]</a>
+        <span class="logo-description">-</span>
+        <span data-ng-dblclick="vm.onDblClick()" data-ng-bind="vm.title" class="logo-description"></span>
+        <span class="nav-left">
+            <a data-ng-repeat="item in vm.menu | orderBy:'order'"
+               class="menu-item"
+               data-ui-sref="{{::item.name}}"
+               data-ui-sref-active="menu-item-active"
+               data-ng-bind="item.data.nav.title"></a>
+        </span>
+    </div>
+</section>

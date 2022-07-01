@@ -1,0 +1,44 @@
+<!doctype html>
+<html data-ng-app="ndoc">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="ndoc">
+        <base href="./">
+        <title>ndoc</title>
+        <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+
+        <!-- mods -->
+        <script src="js/lodash.min.js"></script>
+        <script src="../../node_modules/moment/moment.js"></script>
+        <script src="../../node_modules/angular/angular.js"></script>
+        <script src="../../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="../../node_modules/angular-spinkit/build/angular-spinkit.min.js"></script>
+
+        <!-- styles -->
+        <link href="../../node_modules/angular-spinkit/build/angular-spinkit.min.css" rel="stylesheet">
+        <link href="css/fint.css" rel="stylesheet">
+        <link href="css/misc.css" rel="stylesheet">
+        <link href="css/navigation.css" rel="stylesheet">
+        <link href="css/forms.css" rel="stylesheet">
+        <link href="css/table.css" rel="stylesheet">
+        <link href="css/invoice.css" rel="stylesheet">
+
+        <!-- app -->
+        <script src="index.js"></script>
+        <script src="modules/core/services.js"></script>
+        <script src="modules/core/filters.js"></script>
+        <script src="modules/core/directives.js"></script>
+        <script src="modules/navigation/index.js"></script>
+        <script src="modules/settings/index.js"></script>
+        <script src="modules/signatures/index.js"></script>
+        <script src="modules/index/index.js"></script>
+        <script src="modules/invoice/index.js"></script>
+        <script src="modules/declaration/index.js"></script>
+
+    </head>
+    <body data-ng-cloak>
+        <div data-ui-view="navigation"></div>
+        <div data-ui-view="main"></div>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+# Project
+out
+node_modules
+src/public
+yarn-error.log
+
+
+# Various garbage
+.DS_Store
+.idea
+.vscode
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+*.ipr
+*.iml
+*.iws
+.*.swp
+.*.swo

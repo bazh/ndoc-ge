@@ -1,0 +1,145 @@
+- var round=function (a, b) { b=b || 0; return a.toLocaleString('en', {minimumFractionDigits: b, maximumFractionDigits:b}) }
+- var cur=function(v) {switch(v){case 'usd': return '$'; case 'eur': return '€'; default: return v;}}
+doctype html
+html
+    head
+        meta(charset='utf8')
+    body
+        style.
+            body {
+                padding: 0;
+                margin: 0;
+                font-family: Tahoma;
+                font-size: 10px;
+            }
+
+            .heading {
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .tlr {
+                text-align: right !important;
+            }
+
+            .vertical-spacer {
+                height: 50px;
+            }
+
+            .account {
+                margin: 8px 0;
+                font-weight: bold;
+            }
+
+            .worklog {
+                //- font-weight: bold;
+                border-collapse: collapse;
+            }
+
+            .total {
+                font-weight: bold;
+                height: 30px;
+            }
+
+            .worklog thead {
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .worklog td {
+                border: 1px solid;
+                text-align: center
+            }
+
+            .footer {
+                width: 100%;
+            }
+
+            .sig {
+                height: 90px
+            }
+
+            .sig-line {
+                border-top: 1px solid;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            tr.address {
+                vertical-align: top;
+            }
+
+        table(width='100%').tesss
+            //- sizes
+            tr
+                td
+                td
+                td
+                td
+                td(width='13%')
+                td(width='13%')
+            tr.heading
+                td(colspan=2)= invoice.settings.name
+                td(colspan=2)
+                td(colspan=2) Invoice
+            tr.address
+                - var addr=invoice.settings.address.split('\n');
+                td(colspan=2, rowspan=addr.length) !{addr.join('<br>')}
+                td(colspan=2)
+                td
+                    div DATE:
+                    div INVOICE #:
+                    div AGR. DATE:
+                    div AGR. #:
+                td
+                    div #{invoice.data.invoiceSendDate}
+                    div #{invoice.data.invoiceNo}
+                    div #{invoice.settings.agreementDate}
+                    div #{invoice.settings.agreementNo}
+
+        .vertical-spacer
+        div Bill To:
+        .heading #{invoice.settings.companyName}
+        - var caddr=invoice.settings.companyAddress.split('\n')
+        each line in caddr
+            div= line
+
+        .vertical-spacer
+        table.worklog(width='100%')
+            //- sizes
+            thead
+                tr
+                    td(width='10%') PERIOD
+                    td(width='40%', colspan=2) DESCRIPTION
+                    td(width='10%') AMOUNT
+            tbody
+                tr
+                    td #{invoice.data.periodStart} - #{invoice.data.periodEnd}
+                    td(colspan=2) #{invoice.settings.projectName}
+                    td #{cur(invoice.settings.currency)}#{invoice.timesheet.totalMoney.toFixed(2)}
+                - if (invoice.data.includeBankComission)
+                    tr
+                        td
+                        td(colspan=2) Wire transfer fee
+                        td #{cur(invoice.settings.currency)}#{invoice.settings.bankComission}
+            tr.total
+                td(colspan=3).tlr TOTAL &nbsp;&nbsp;
+                td #{cur(invoice.settings.currency)}#{(invoice.timesheet.totalMoney + (invoice.data.includeBankComission ? invoice.settings.bankComission : 0)).toFixed(2)}
+
+        .vertical-spacer
+        table.footer(border=0)
+            tr
+                td(width='45%')
+                    div.account Bank details for remittance:
+                    div Name: #{invoice.settings.name}
+                    div Account: #{invoice.settings.account}
+                    - var bankAcc=invoice.settings.accountBank.split('\n')
+                    each line in bankAcc
+                        div= line
+                td(width='10%')
+                td(width='30%').center
+                    - var data=`data:${signature.mime};${signature.encoding},${signature.data}`
+                    img.sig(src=data)
+                    div.sig-line= invoice.settings.name

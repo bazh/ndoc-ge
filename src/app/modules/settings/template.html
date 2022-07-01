@@ -1,0 +1,115 @@
+<section class="container sm-l sm-6 md-6 lg-6 settings" data-ng-controller="SettingsCtrl as vm">
+    <div class="pad">
+        <ndoc-section-title data-title="Настройки"></ndoc-section-title>
+        <div class="menu-spacer"></div>
+        <form class="ndoc-form" name="vm.settingsForm" data-ng-submit="vm.onSubmit()">
+            <div class="form-section">Общие настройки</div>
+            <div class="form-group">
+                <label class="control-label">Имя Фамилия</label>
+                <input type="text" data-ng-model="vm.settings.name" placeholder="Ivan Ivanov" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Адрес</label>
+                <textarea rows=4 data-ng-model="vm.settings.address" placeholder="127000, Georgia, Tbilisi
+Chavzhavadze str. 78-3" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Расчетный счет</label>
+                <input type="text" data-ng-model="vm.settings.account" placeholder="GE51LX0XX212XXXX43YYYY" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Реквизиты банка</label>
+                <textarea rows=10 data-ng-model="vm.settings.accountBank" placeholder="Beneficiary's Bank:  JSC Liberty Bank
+Beneficiary's Bank SWIFT:  LBRTGE22
+Beneficiary's Bank Address:  TBILISI, GEORGIA
+Intermediary's Bank:  DEUTSCHE BANK TRUST COMPANY AMERICAS
+Intermediary's Bank SWIFT:  BKTRUS33
+Intermediary's Bank Address:  NEW YORK, USA
+Intermediary's Bank Account:  021001033" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Название компании</label>
+                <input type="text" data-ng-model="vm.settings.companyName" placeholder="Umbrella, Inc" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Адрес компании</label>
+                <textarea rows="8" data-ng-model="vm.settings.companyAddress" placeholder="1234 Maximum Avenue
+San Francisco, CA 12345
+USA
+Tel 111.222.333
+Fax 444.555.666" required></textarea>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Номер контракта</label>
+                <input type="text" data-ng-model="vm.settings.agreementNo" placeholder="BNJ-125120-099" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Дата контракта</label>
+                <ndoc-date-picker data-ng-model="vm.settings.agreementDate" placeholder="02.01.2019" required></ndoc-date-picker>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Валюта</label>
+                <select ng-model="vm.settings.currency">
+                    <option data-ng-repeat="c in vm.currencies" data-ng-value="c.id" data-ng-bind="c.val"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Стоимость часа работы</label>
+                <input type="number" step="0.01" data-ng-model="vm.settings.payRate" placeholder="10" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Комиссия банка за перевод</label>
+                <input type="number" step="0.01" data-ng-model="vm.settings.bankComission" placeholder="15">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Типичный рабочий день в часах</label>
+                <input type="number" data-ng-model="vm.settings.workHours" placeholder="8">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Название проекта</label>
+                <input type="text" data-ng-model="vm.settings.projectName" placeholder="Provision of YYY Services">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Email адрес менеджера</label>
+                <input type="text" data-ng-model="vm.settings.emailManager" placeholder="john.doe@yyy.com" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Заголовок для письма c инвойсом</label>
+                <input type="text" data-ng-model="vm.settings.emailTitle" placeholder="Invoice for approval - Ivan Ivanov" required>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Тело письма</label>
+                <textarea rows="8" data-ng-model="vm.settings.emailBody" placeholder="Hello,
+
+    Please check attached invoice and bank additional documentation for approval (#{periodStart} - #{periodEnd}).
+
+Regards,
+    Ivan" required></textarea>
+                <div class="hint">Можно использовать автоматические поля #{periodStart} и #{periodEnd}</div>
+            </div>
+
+            <div class="form-section">Настройки для деклараций (не обязательно)</div>
+            <div class="form-group">
+                <label class="control-label">Банк и логин/пароль для входа</label>
+                <select ng-model="vm.settings.bankId" style="width:10%">
+                    <option data-ng-repeat="c in vm.banks" data-ng-value="c.id" data-ng-bind="c.val"></option>
+                </select>
+                <input type="text" style="width:15%" data-ng-model="vm.settings.bankLogin">
+                <input type="password" style="width:15%" data-ng-model="vm.settings.bankPassword">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Логин/пароль для входа в налоговую</label>
+                <input type="text" style="width:20%" data-ng-model="vm.settings.rsLogin">
+                <input type="password" style="width:20%" data-ng-model="vm.settings.rsPassword">
+            </div>
+            <div class="button-group">
+                <div class="left">
+                    <button type="submit" data-ng-disabled="vm.settingsForm.$invalid">Сохранить</button>
+                </div>
+                <div class="right">
+                    <button type="button" data-ng-click="vm.clearSettings()">Удалить все настройки!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
